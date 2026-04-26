@@ -1,5 +1,10 @@
 # 🚀 AI-Powered Data Analyst Dashboard
 
+## 🚀 Live Demo
+👉 https://ai-data-analyst-dashboard-nb6ezxeynakvdghkb8rbsv.streamlit.app/
+
+
+## 📌 Overview
 An interactive Streamlit application that allows users to upload a CSV file and automatically generate **data insights, KPIs, visualizations, and downloadable reports**.
 
 
