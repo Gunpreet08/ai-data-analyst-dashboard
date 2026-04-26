@@ -1,12 +1,12 @@
-import requests
+# import requests
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
-MODEL_NAME = "llama3.2"
-
+# OLLAMA_URL = "http://localhost:11434/api/generate"
+# MODEL_NAME = "llama3.2"
+from utils.groq_client import get_groq_response
 
 def generate_ai_summary(df, rule_based_insights, correlation_insight=None):
     """
-    Generate an AI summary using locally running Ollama.
+    Generate an AI summary using Groq API.
     Returns:
         summary_text, error_message
     """
@@ -42,20 +42,22 @@ Correlation Insight:
 Now write the final summary.
 """
 
-        response = requests.post(
-            OLLAMA_URL,
-            json={
-                "model": MODEL_NAME,
-                "prompt": prompt,
-                "stream": False
-            },
-            timeout=120
-        )
+        # response = requests.post(
+        #     OLLAMA_URL,
+        #     json={
+        #         "model": MODEL_NAME,
+        #         "prompt": prompt,
+        #         "stream": False
+        #     },
+        #     timeout=120
+        # )
 
-        response.raise_for_status()
-        data = response.json()
+        # response.raise_for_status()
+        # data = response.json()
 
-        return data.get("response", "").strip(), None
+        # return data.get("response", "").strip(), None
+        raw_text = get_groq_response(prompt)
+        return raw_text, None
 
     except Exception as e:
         return None, str(e)

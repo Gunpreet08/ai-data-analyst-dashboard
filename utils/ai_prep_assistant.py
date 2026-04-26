@@ -1,9 +1,9 @@
-import requests
+# import requests
 import json
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
-MODEL_NAME = "llama3.2"
-
+# OLLAMA_URL = "http://localhost:11434/api/generate"
+# MODEL_NAME = "llama3.2"
+from utils.groq_client import get_groq_response
 
 def extract_json(text):
     """
@@ -91,19 +91,20 @@ User Request:
 {user_request}
 """
 
-        response = requests.post(
-            OLLAMA_URL,
-            json={
-                "model": MODEL_NAME,
-                "prompt": prompt,
-                "stream": False
-            },
-            timeout=120
-        )
-        response.raise_for_status()
+        # response = requests.post(
+        #     OLLAMA_URL,
+        #     json={
+        #         "model": MODEL_NAME,
+        #         "prompt": prompt,
+        #         "stream": False
+        #     },
+        #     timeout=120
+        # )
+        # response.raise_for_status()
 
-        data = response.json()
-        raw_text = data.get("response", "").strip()
+        # data = response.json()
+        # raw_text = data.get("response", "").strip()
+        raw_text = get_groq_response(prompt)
         clean_json = extract_json(raw_text)
         plan = json.loads(clean_json)
 

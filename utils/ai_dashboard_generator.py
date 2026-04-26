@@ -1,9 +1,10 @@
-import requests
+# import requests
 import json
+from tracemalloc import start
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
-MODEL_NAME = "llama3.2"
-
+# OLLAMA_URL = "http://localhost:11434/api/generate"
+# MODEL_NAME = "llama3.2"
+from utils.groq_client import get_groq_response
 
 def generate_dashboard_plan(df):
     """
@@ -83,26 +84,45 @@ GOOD → "Average Age", "Total Salary", "Max Salary", "Employees with Experience
 - If using bar chart, x should preferably be categorical and y should be numeric.
 - If the dataset has very few rows, prefer simple charts: histogram and scatter.
 - Do not recommend line charts unless there is a datetime/date column.
+- Return ONLY raw JSON.
+- Do not use markdown.
+- Do not wrap JSON inside ```json code block.
+- Do not write explanation before or after JSON.
 Dataset Metadata:
 {json.dumps(column_info, indent=2)}
 """
 
-        response = requests.post(
-            OLLAMA_URL,
-            json={
-                "model": MODEL_NAME,
-                "prompt": prompt,
-                "stream": False
-            },
-            timeout=120
-        )
+        # response = requests.post(
+        #     OLLAMA_URL,
+        #     json={
+        #         "model": MODEL_NAME,
+        #         "prompt": prompt,
+        #         "stream": False
+        #     },
+        #     timeout=120
+        # )
 
-        response.raise_for_status()
-        data = response.json()
-        raw_text = data.get("response", "").strip()
+        # response.raise_for_status()
+        # data = response.json()
+        # raw_text = data.get("response", "").strip()
+        raw_text = get_groq_response(prompt)
+        # Clean Groq response if it includes markdown/code block
+        raw_text = raw_text.strip()
 
-        # Try parsing response as JSON
-        plan = json.loads(raw_text)
+        if raw_text.startswith("```json"):
+            raw_text = raw_text.replace("```json", "").replace("```", "").strip()
+        elif raw_text.startswith("```"):
+            raw_text = raw_text.replace("```", "").strip()
+
+        # Extract JSON object safely
+        start = raw_text.find("{")
+        end = raw_text.rfind("}") + 1
+
+        if start == -1 or end == 0:
+            return None, "AI did not return valid JSON."
+
+        json_text = raw_text[start:end]
+        plan = json.loads(json_text)
 
         return plan, None
 
