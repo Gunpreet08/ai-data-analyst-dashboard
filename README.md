@@ -2,7 +2,6 @@
 
 An interactive Streamlit application that allows users to upload a CSV file and automatically generate **data insights, KPIs, visualizations, and downloadable reports**.
 
----
 
 ## 📊 Features
 
@@ -32,7 +31,6 @@ An interactive Streamlit application that allows users to upload a CSV file and 
 - Filter numeric columns dynamically
 - Updates dashboard in real-time
 
----
 
 ## 🖥️ Tech Stack
 
@@ -41,7 +39,6 @@ An interactive Streamlit application that allows users to upload a CSV file and 
 - Matplotlib (Visualization)
 - ReportLab (PDF Generation)
 
----
 
 ## ⚙️ How to Run
 
@@ -59,6 +56,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+
 ## 📂 How it Works
 
 1. Upload CSV file
@@ -70,13 +68,12 @@ streamlit run app.py
 3. Apply filters
 4. Download report
 
+
 ## 🧠 Key Highlights
 - Works with any dataset
 - Avoids bad visualizations automatically
 - Clean dashboard layout (Power BI inspired)
 - End-to-end pipeline: Upload → Analyze → Export
-
-## 📸 Screenshots
 
 
 ## 🚀 Future Improvements
@@ -84,9 +81,11 @@ streamlit run app.py
 - More chart types
 - Deployment support
 
+
 ## 👩‍💻 Author
 Gunpreet Kaur
 BCA Student | Aspiring Data Analyst
+
 
 ## ⭐ Support
 If you like this project, give it a ⭐
