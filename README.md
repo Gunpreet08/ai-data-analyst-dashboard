@@ -77,7 +77,18 @@ streamlit run app.py
 
 
 ## 📸 Screenshots
-![Dashboard](<img width="1901" height="900" alt="image" src="https://github.com/user-attachments/assets/b8773691-70d6-4f56-8821-4a6ee374ebab" />)
+
+### Landing Page
+![Landing](screenshots/Landing Page.png)
+
+### Dashboard
+![Dashboard](screenshots/Data Overview.png)
+
+### AI Insights
+![Insights](screenshots/Analysis.png)
+
+### PDF Report
+![PDF](screenshots/KPIs.png)
 
 
 
