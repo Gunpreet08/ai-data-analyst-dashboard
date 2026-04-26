@@ -79,15 +79,15 @@ streamlit run app.py
 ## 📸 Screenshots
 
 ### Landing Page
-![Landing](screenshots/Landing Page.png)
+![Landing](screenshots/Landing_Page.png)
 
-### Dashboard
-![Dashboard](screenshots/Data Overview.png)
+### Data Overview
+![Dashboard](screenshots/Data_Overview.png)
 
-### AI Insights
+### Analysis / Charts
 ![Insights](screenshots/Analysis.png)
 
-### PDF Report
+### KPIs Dashboard
 ![PDF](screenshots/KPIs.png)
 
 
