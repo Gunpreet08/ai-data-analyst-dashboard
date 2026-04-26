@@ -76,6 +76,11 @@ streamlit run app.py
 - End-to-end pipeline: Upload → Analyze → Export
 
 
+## 📸 Screenshots
+![Dashboard](<img width="1901" height="900" alt="image" src="https://github.com/user-attachments/assets/b8773691-70d6-4f56-8821-4a6ee374ebab" />)
+
+
+
 ## 🚀 Future Improvements
 - Advanced AI insights
 - More chart types
